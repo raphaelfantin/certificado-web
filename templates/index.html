@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerar Certificado</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-xl">
+    <img src="/static/img/Logo.png" class="h-16 mx-auto mb-6 bg-black p-2 rounded" alt="Logo">
+    <h1 class="text-2xl font-bold mb-6 text-center text-[#16a084]">🎓 Gerar Certificado</h1>
+    <form method="POST" class="space-y-4">
+      <input type="text" name="nome" placeholder="Nome completo" required class="w-full border rounded px-4 py-2">
+      <input type="text" name="cpf" placeholder="CPF" required class="w-full border rounded px-4 py-2">
+      <select name="nivel" required class="w-full border rounded px-4 py-2">
+        <option value="">Selecione o nível</option>
+        <option value="Básico">Básico</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
+      </select>
+      <button type="submit" class="w-full bg-[#16a084] text-white py-2 rounded hover:bg-[#138a71] transition">
+        Gerar Certificado
+      </button>
+    </form>
+    <div class="text-center mt-6">
+      <a href="/buscar" class="text-[#16a084] hover:underline">🔍 Buscar certificado</a>
+    </div>
+  </div>
+</body>
+</html>
