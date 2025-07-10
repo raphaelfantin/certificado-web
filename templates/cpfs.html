@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CPFs Emitidos</title>
+</head>
+<body>
+    <h1>CPFs que já emitiram certificados</h1>
+    <ul>
+        {% for cpf in cpfs %}
+            <li>{{ cpf }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

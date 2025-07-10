@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request, send_from_directory
 from utils.gerador_certificado import gerar_certificado, listar_certificados
+from utils.listar_cpfs import listar_cpfs_emitidos
 import os
 import re
 
@@ -30,6 +31,11 @@ def buscar():
 def certificado(nome_arquivo):
     pasta = os.path.join("static", "certificados")
     return send_from_directory(pasta, nome_arquivo, as_attachment=True)
+
+@app.route("/cpfs")
+def cpfs_emitidos():
+    cpfs = listar_cpfs_emitidos()
+    return render_template("cpfs.html", cpfs=cpfs)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

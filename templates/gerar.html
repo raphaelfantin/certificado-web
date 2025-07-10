@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,15 +5,32 @@
   <title>Certificado Gerado</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
-  <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-xl text-center">
-    <h1 class="text-2xl font-bold mb-4 text-[#16a084]">✅ Certificado Gerado com Sucesso!</h1>
-    <a href="{{ link }}" class="inline-block bg-[#16a084] text-white px-6 py-3 rounded hover:bg-[#138a71] transition">
-      📥 Baixar Certificado
-    </a>
-    <div class="mt-4">
-      <a href="/" class="text-[#16a084] hover:underline">Voltar</a>
-    </div>
+<body class="bg-gray-100 flex flex-col items-center justify-start min-h-screen p-4">
+  <div class="bg-white shadow-md rounded-lg p-8 mt-10 w-full max-w-xl text-center">
+    <h1 class="text-2xl font-bold text-[#16a084] mb-6">🎓 Certificado Gerado</h1>
+
+    {% if link %}
+      <p class="mb-4">
+        <a href="{{ link }}" target="_blank" class="bg-[#16a084] text-white text-lg px-6 py-3 rounded hover:bg-[#138a71] transition font-semibold">
+          📄 Clique para Baixar
+        </a>
+      </p>
+
+      <p class="text-sm text-gray-800">
+        <span class="text-red-600 font-bold">Atenção:</span> o certificado precisa ser baixado agora.<br>
+        O link do PDF e o QR Code têm validade de <strong>30 dias</strong>.<br>
+        Após esse prazo, será necessário entrar em contato com o suporte pelo WhatsApp: <strong>(11) 93929-3514</strong>.
+      </p>
+
+      <p class="text-gray-700 mt-4">
+        Em caso de dúvidas, fale com o suporte pelo WhatsApp:<br>
+        <a href="https://wa.me/5511939293514" target="_blank" class="text-green-600 font-bold underline">
+          (11) 93929-3514
+        </a>
+      </p>
+    {% endif %}
+
+    <a href="/" class="mt-8 inline-block text-[#16a084] hover:underline">&larr; Emitir outro certificado</a>
   </div>
 </body>
 </html>
