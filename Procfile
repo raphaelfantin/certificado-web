@@ -1,13 +1,16 @@
-CertificadoWeb/
+certificado-web/
 ├── app.py
-├── Procfile
 ├── requirements.txt
-├── static/
-│   └── certificados/
-│   └── img/
+├── utils/
+│   ├── gerador_certificado.py
+│   └── templates_png/
+│       ├── basico_frente.png
+│       ├── ...
 ├── templates/
 │   ├── index.html
 │   ├── gerar.html
 │   └── buscar.html
-└── utils/
-    └── gerador_certificado.py
+├── static/
+│   ├── certificados/
+│   └── img/
+│       └── Logo.png

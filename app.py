@@ -32,6 +32,4 @@ def certificado(nome_arquivo):
     return send_from_directory(pasta, nome_arquivo, as_attachment=True)
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 10000))
-    app.run(debug=False, host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

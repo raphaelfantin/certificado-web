@@ -2,6 +2,7 @@ from fpdf import FPDF
 from datetime import datetime
 import os
 import re
+import qrcode
 
 TEMPLATE_PATHS = {
     "Básico": {
@@ -17,6 +18,8 @@ TEMPLATE_PATHS = {
         "verso": "utils/templates_png/avancado_verso.png"
     }
 }
+
+BASE_URL = "https://certificado-web.onrender.com"
 
 def data_em_portugues():
     meses = {
@@ -41,6 +44,13 @@ def gerar_certificado(nome, cpf, nivel):
     nome_arquivo = f"{cpf}_{nivel}_{hoje_iso}.pdf"
     output_path = os.path.join("static", "certificados", nome_arquivo)
 
+    # Gera o QR code
+    url_qr = f"{BASE_URL}/static/certificados/{nome_arquivo}"
+    qr_img_path = f"static/qrcodes/{cpf}_{nivel}_{hoje_iso}.png"
+    os.makedirs("static/qrcodes", exist_ok=True)
+    qr = qrcode.make(url_qr)
+    qr.save(qr_img_path)
+
     pdf = FPDF(orientation='L', unit='mm', format='A4')
 
     for lado in ["frente", "verso"]:
@@ -49,6 +59,9 @@ def gerar_certificado(nome, cpf, nivel):
         pdf.image(img_path, x=0, y=0, w=297, h=210)
 
         if lado == "frente":
+            # QR code no canto superior direito
+            pdf.image(qr_img_path, x=260, y=10, w=30)
+
             pdf.set_font("Helvetica", "B", 26)
             pdf.set_text_color(0, 0, 0)
             pdf.set_xy(0, 70)
